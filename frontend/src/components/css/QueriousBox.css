@@ -1,0 +1,32 @@
+.queriousBox {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border: none;
+  background-color: rgb(39, 38, 38);
+  color: rgb(219, 219, 219);
+  border-radius: 5px;
+  cursor: pointer;
+  max-width: 700px;
+}
+
+.queriousBox:hover {
+  border: none;
+}
+
+.queriousBox__info {
+  display: flex;
+  align-items: center;
+}
+
+.queriousBox__info > h5 {
+  color: rgb(129, 129, 129);
+  font-weight: bold;
+  margin-left: 10px;
+  font-size: large;
+}
+
+.queriousBox__querious {
+  display: flex;
+  margin-top: 8px;
+}
