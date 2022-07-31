@@ -5,7 +5,6 @@
   position: sticky;
   z-index: 1000;
   top: 0px;
-  /* box-shadow: 0px 5px 8px -9px rgba(0, 0, 0, 0.5); */
   box-shadow: 2px 3px 6px rgba(187, 187, 187, 0.5);
   justify-content: center;
   padding: 3px;
@@ -215,6 +214,12 @@
 
 .react-responsive-modal-closeButton {
   color: white;
+}
+
+@media only screen and (min-width: 900px) {
+  .qHeader__icon {
+    padding: 0px;
+  }
 }
 
 @media only screen and (max-width: 600px) {

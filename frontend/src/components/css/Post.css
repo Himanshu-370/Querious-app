@@ -129,7 +129,7 @@
 }
 
 .modal__question > h1 {
-  color: #8f1f1b;
+  color: rgb(237, 176, 85);
   font-weight: 600;
   margin-bottom: 10px;
 }
@@ -140,7 +140,7 @@
 }
 
 .modal__question > p > .name {
-  color: black;
+  color: rgb(237, 176, 85);
   font-weight: bold;
 }
 
@@ -148,6 +148,7 @@
   display: flex;
   padding-top: 20px;
   flex: 1;
+  color: rgb(237, 176, 85);
 }
 
 .modal__answer > textarea {
@@ -155,7 +156,7 @@
   height: 200px;
   padding: 5px;
   font-size: 15px;
-  color: black;
+  color: rgb(237, 176, 85);
 }
 
 .modal__button {
@@ -173,20 +174,20 @@
   color: gray;
   font-weight: 500;
   padding: 10px;
-  border-radius: 33px;
+  border-radius: 25px;
   cursor: pointer;
 }
 
 .modal__button > .cancel:hover {
-  color: black;
+  color: red;
 }
 
 .modal__button > .add {
   border: none;
   outline: none;
   margin-top: 5px;
-  background-color: #222;
-  color: white;
+  background-color: rgb(237, 176, 85);
+  color: black;
   font-weight: 700;
   padding: 10px;
   border-radius: 33px;
@@ -195,7 +196,7 @@
 }
 
 .modal__button > .add:hover {
-  background-color: #eee;
+  background-color: rgb(237, 167, 63);
   color: #222;
 }
 

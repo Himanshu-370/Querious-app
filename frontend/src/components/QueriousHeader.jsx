@@ -11,11 +11,38 @@ import "./css/QueriousHeader.css";
 import Modal from "react-responsive-modal";
 import CloseIcon from "@material-ui/icons/Close";
 import "react-responsive-modal/styles.css";
+import axios from "axios";
 
 function QueriousHeader() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [inputUrl, setInputUrl] = React.useState("");
+  const [question, setQuestion] = React.useState("");
   const Close = <CloseIcon />;
+
+  const handleSubmit = async () => {
+    if (question !== "") {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const body = {
+        questionName: question,
+        questionUrl: inputUrl,
+      };
+      await axios
+        .post("/api/questions", body, config)
+        .then((res) => {
+          console.log(res.data);
+          alert(res.data.message);
+          window.location.href = "/";
+        })
+        .catch((e) => {
+          console.log(e);
+          alert("Error in adding question");
+        });
+    }
+  };
 
   return (
     <div className="qHeader">
@@ -78,7 +105,8 @@ function QueriousHeader() {
               <div className="modal__Field">
                 <Input
                   type=" text"
-                  required
+                  value={question}
+                  onChange={(e) => setQuestion(e.target.value)}
                   placeholder="Start your question with 'What', 'How', 'Why', etc. "
                 />
                 <div
@@ -118,7 +146,7 @@ function QueriousHeader() {
                 >
                   Cancel
                 </button>
-                <button type="submit" className="add">
+                <button onClick={handleSubmit} type="submit" className="add">
                   Add Question
                 </button>
               </div>
