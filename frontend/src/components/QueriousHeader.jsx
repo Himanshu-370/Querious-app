@@ -12,12 +12,18 @@ import Modal from "react-responsive-modal";
 import CloseIcon from "@material-ui/icons/Close";
 import "react-responsive-modal/styles.css";
 import axios from "axios";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase";
+import { useDispatch, useSelector } from "react-redux";
+import { logout, selectUser } from "../feature/userSlice";
 
 function QueriousHeader() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [inputUrl, setInputUrl] = React.useState("");
   const [question, setQuestion] = React.useState("");
   const Close = <CloseIcon />;
+  const dispatch = useDispatch();
+  const user = useSelector(selectUser);
 
   const handleSubmit = async () => {
     if (question !== "") {
@@ -29,6 +35,7 @@ function QueriousHeader() {
       const body = {
         questionName: question,
         questionUrl: inputUrl,
+        user: user,
       };
       await axios
         .post("/api/questions", body, config)
@@ -40,6 +47,18 @@ function QueriousHeader() {
         .catch((e) => {
           console.log(e);
           alert("Error in adding question");
+        });
+    }
+  };
+
+  const handleLogout = () => {
+    if (window.confirm("Are you sure to logout?")) {
+      signOut(auth)
+        .then(() => {
+          dispatch(logout());
+        })
+        .catch((err) => {
+          console.log(err);
         });
     }
   };
@@ -72,8 +91,8 @@ function QueriousHeader() {
             <input type="text" placeholder="Search questions" />
           </div>
           <div className="qHeader__Rem">
-            <span>
-              <Avatar />
+            <span onClick={handleLogout}>
+              <Avatar src={user?.photo} />
             </span>
 
             <Button onClick={() => setIsModalOpen(true)}>Add Question</Button>
@@ -95,7 +114,7 @@ function QueriousHeader() {
                 <h5>Share Link</h5>
               </div>
               <div className="modal__info">
-                <Avatar className="avatar" />
+                <Avatar src={user?.photo} className="avatar" />
                 <div className="modal__scope">
                   <PeopleAltOutlinedIcon />
                   <p>Public</p>

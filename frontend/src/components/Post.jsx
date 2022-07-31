@@ -16,6 +16,8 @@ import { modules, formats } from "react-quill";
 import ReactTimeAgo from "react-time-ago";
 import axios from "axios";
 import ReactHtmlParser from "html-react-parser";
+import { selectUser } from "../feature/userSlice";
+import { useSelector } from "react-redux";
 
 function LastSeen({ date }) {
   return (
@@ -28,12 +30,22 @@ function LastSeen({ date }) {
 function Post({ post }) {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [answer, setAnswer] = React.useState("");
+  const [liked, setLiked] = React.useState(0);
+  const [isClicked, setIsClicked] = React.useState(false);
   const Close = <CloseIcon />;
+
+  const user = useSelector(selectUser);
 
   const handleQuill = (value) => {
     setAnswer(value);
   };
-  // console.log(answer);
+
+  const handleLikeClick = () => {
+    if (isClicked) {
+      setLiked(liked + 1);
+    }
+    setIsClicked(!isClicked);
+  };
 
   const handleSubmit = async () => {
     if (post?._id && answer !== "") {
@@ -46,6 +58,7 @@ function Post({ post }) {
       const body = {
         answer: answer,
         questionId: post?._id,
+        user: user,
       };
 
       await axios
@@ -65,8 +78,8 @@ function Post({ post }) {
   return (
     <div className="post">
       <div className="post__info">
-        <Avatar />
-        <h4>User Name</h4>
+        <Avatar src={post?.user?.photo} />
+        <h4>{post?.user?.userName}</h4>
 
         <small>
           <LastSeen date={post?.createdAt} />
@@ -97,7 +110,8 @@ function Post({ post }) {
             <div className="modal__question">
               <h1>{post?.questionName}</h1>
               <p>
-                Asked by &nbsp;<span className="name"> Username &nbsp;</span>
+                Asked by &nbsp;
+                <span className="name"> {post?.user?.userName} &nbsp;</span>
                 on &nbsp;
                 <span className="name">
                   {new Date(post?.createdAt).toLocaleString()}
@@ -129,11 +143,10 @@ function Post({ post }) {
       </div>
       <div className="post__footer">
         <div className="post__footerAction">
-          <ArrowUpwardOutlined />
+          <ArrowUpwardOutlined className="liked" onClick={handleLikeClick} />
+          <span>{`${liked}`}</span>
           <ArrowDownwardOutlined />
         </div>
-        <RepeatOneOutlined />
-        <ChatBubbleOutlined />
         <div className="post__footerLeft">
           <ShareOutlined />
           <MoreHorizOutlined />

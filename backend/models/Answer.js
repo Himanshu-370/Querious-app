@@ -14,6 +14,7 @@ const AnswerSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Answers",
   },
+  user: Object,
 });
 
 module.exports = mongoose.model("Answers", AnswerSchema);
