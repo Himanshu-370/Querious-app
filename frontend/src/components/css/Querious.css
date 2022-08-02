@@ -7,7 +7,7 @@
   display: flex;
   justify-content: center;
   padding: 50px 0;
-  background-color: rgb(20, 20, 20);
+  background-color: rgb(245, 245, 245);
   min-width: fit-content;
   width: 100%;
 }
@@ -16,13 +16,15 @@
   display: flex;
   flex-direction: row;
   padding: 0px 10px;
-  gap: 30px;
+  /* gap: 13px; */
+  justify-content: center;
+  width: 100%;
 }
 
 .react-responsive-modal-modal {
-  width: 90vw;
+  width: 100vw;
   height: 90vh;
-  background: rgb(28, 28, 28);
+  background-color: rgb(240, 240, 240);
 }
 
 .quill {

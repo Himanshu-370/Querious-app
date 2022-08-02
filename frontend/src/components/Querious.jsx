@@ -11,9 +11,9 @@ function Querious() {
       <QueriousHeader />
       <div className="querious__contents">
         <div className="querious__content">
-          <Sidebar />
+          {/* <Sidebar /> */}
           <Feed />
-          <Widget />
+          {/* <Widget /> */}
         </div>
       </div>
     </div>

@@ -3,10 +3,9 @@
   flex-direction: column;
   padding: 10px;
   border: none;
-  background-color: rgb(39, 38, 38);
-  color: rgb(219, 219, 219);
+  background-color: rgb(240, 240, 240);
+  color: rgb(30, 30, 30);
   border-radius: 5px;
-  cursor: pointer;
   max-width: 700px;
 }
 

@@ -73,7 +73,7 @@ function QueriousHeader() {
           <div className="qHeader__icon">
             <HomeIcon />
           </div>
-          <div className="qHeader__icon">
+          {/* <div className="qHeader__icon">
             <FeaturedPlayListIcon />
           </div>
           <div className="qHeader__icon">
@@ -84,7 +84,7 @@ function QueriousHeader() {
           </div>
           <div className="qHeader__icon">
             <PeopleAltOutlinedIcon />
-          </div>
+          </div> */}
 
           <div className="qHeader__input">
             <Search />

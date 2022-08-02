@@ -1,7 +1,7 @@
 .qHeader {
   display: flex;
   align-items: center;
-  background-color: rgb(43, 43, 43);
+  background-color: rgb(240, 240, 240);
   position: sticky;
   z-index: 1000;
   top: 0px;
@@ -88,7 +88,7 @@
 }
 
 .qHeader__Rem > .MuiButton-root {
-  color: white;
+  color: rgb(49, 49, 49);
   background: rgb(237, 176, 85);
   text-transform: inherit;
   border-radius: 25px;
@@ -98,7 +98,7 @@
 }
 
 .qHeader__Rem > .MuiButton-root:hover {
-  color: rgb(49, 49, 49);
+  color: white;
   background: rgb(237, 167, 63);
 }
 
@@ -111,7 +111,7 @@
 }
 
 .modal__title > h5 {
-  color: rgb(220, 220, 220);
+  color: rgb(30, 30, 30);
   font-size: 20px;
   cursor: pointer;
   font-weight: 500;
@@ -154,7 +154,7 @@
 }
 
 .MuiInputBase-input {
-  color: white !important;
+  color: rgb(30, 30, 30) !important;
 }
 
 .modal__Field > .modal__fieldLink {

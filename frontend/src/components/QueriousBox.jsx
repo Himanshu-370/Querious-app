@@ -13,7 +13,7 @@ function QueriousBox() {
         <Avatar src={user?.photo} />
       </div>
       <div className="queriousBox__querious">
-        <h5>What is your question or link?</h5>
+        <h4>What is your question or link?</h4>
       </div>
     </div>
   );

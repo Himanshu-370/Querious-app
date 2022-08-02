@@ -1,12 +1,10 @@
 import React from "react";
 import "./css/Post.css";
-import ArrowUpwardOutlined from "@material-ui/icons/ArrowUpwardOutlined";
-import ArrowDownwardOutlined from "@material-ui/icons/ArrowDownwardOutlined";
-import RepeatOneOutlined from "@material-ui/icons/RepeatOneOutlined";
-import ChatBubbleOutlined from "@material-ui/icons/ChatBubbleOutlined";
 import ShareOutlined from "@material-ui/icons/ShareOutlined";
-import MoreHorizOutlined from "@material-ui/icons/MoreHorizOutlined";
-import { Avatar, Button } from "@material-ui/core";
+import DeleteIcon from "@material-ui/icons/Delete";
+import ThumbUpOffAltIcon from "@material-ui/icons/ThumbUpAltOutlined";
+import ThumbDownOffAltIcon from "@material-ui/icons/ThumbDownAltOutlined";
+import { Avatar } from "@material-ui/core";
 import Modal from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import CloseIcon from "@material-ui/icons/Close";
@@ -22,7 +20,7 @@ import { useSelector } from "react-redux";
 function LastSeen({ date }) {
   return (
     <div>
-      <ReactTimeAgo date={date} locale="en-US" timeStyle="round" />
+      <ReactTimeAgo date={date} locale="en-US" timeStyle="twitter" />
     </div>
   );
 }
@@ -87,7 +85,14 @@ function Post({ post }) {
       </div>
       <div className="post__body">
         <div className="post__question">
-          <p>{post?.questionName}</p>
+          <p>
+            {post?.questionName}
+            {/* {post?.questionName.substring(0, 100)}
+            <span className="read-more">
+              {post?.questionName.length >= 100 && "... Read more"}
+            </span> */}
+          </p>
+
           <button
             onClick={() => setIsModalOpen(true)}
             className="post__btnAnswer"
@@ -108,7 +113,7 @@ function Post({ post }) {
             }}
           >
             <div className="modal__question">
-              <h1>{post?.questionName}</h1>
+              <h2>{post?.questionName}</h2>
               <p>
                 Asked by &nbsp;
                 <span className="name"> {post?.user?.userName} &nbsp;</span>
@@ -143,18 +148,18 @@ function Post({ post }) {
       </div>
       <div className="post__footer">
         <div className="post__footerAction">
-          <ArrowUpwardOutlined className="liked" onClick={handleLikeClick} />
+          <ThumbUpOffAltIcon className="liked" onClick={handleLikeClick} />
           <span>{`${liked}`}</span>
-          <ArrowDownwardOutlined />
+          <ThumbDownOffAltIcon />
         </div>
         <div className="post__footerLeft">
           <ShareOutlined />
-          <MoreHorizOutlined />
+          <DeleteIcon />
         </div>
       </div>
       <p
         style={{
-          color: "rgb(219, 219, 219, 0.5)",
+          color: "rgb(39, 39, 39, 0.5)",
           fontSize: "12px",
           fontWeight: "bold",
           margin: "10px 0",
@@ -201,11 +206,12 @@ function Post({ post }) {
                 >
                   <p>{_a?.user?.userName}</p>
                   <span>
-                    <LastSeen date={_a?.createdAt} />
+                    {/* <LastSeen date={_a?.createdAt} /> */}
+                    <LastSeen date={new Date(_a?.createdAt).toLocaleString()} />
                   </span>
                 </div>
               </div>
-              <div className="post-answer">{ReactHtmlParser(_a?.answer)}</div>{" "}
+              <div className="post-answer">{ReactHtmlParser(_a?.answer)}</div>
             </div>
           </>
         ))}

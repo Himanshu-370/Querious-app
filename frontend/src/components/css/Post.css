@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: column;
   padding: 10px;
-  background-color: rgb(39, 38, 38);
-  color: rgb(219, 219, 219);
+  background-color: rgb(240, 240, 240);
+  color: rgb(30, 30, 30);
   margin-top: 10px;
   border: none;
   border-radius: 5px;
@@ -36,12 +36,19 @@
 
 .post__body > .post__question {
   margin-top: 10px;
-  font-weight: bold;
+  font-weight: light;
   margin-bottom: 10px;
-  cursor: pointer;
   display: flex;
   align-items: center;
   flex: 1;
+}
+
+.post__body > .post__question > p:hover {
+  text-decoration: none !important;
+}
+
+.post__question > .read-more {
+  color: rgb(0, 145, 255);
 }
 
 .post__question > .post__btnAnswer {
@@ -59,7 +66,9 @@
 
 .post__btnAnswer:hover {
   background-color: rgb(237, 167, 63);
-  color: #222;
+  color: #fff;
+  transform: scale(1.1);
+  transition: 200ms ease;
 }
 
 .post__question > p:hover {
@@ -113,6 +122,8 @@
 .post__footerAction > .MuiSvgIcon-root:hover {
   color: rgb(0, 140, 255);
   margin-right: 40px;
+  transform: scale(1.1);
+  transition: 200ms ease;
 }
 
 .post__footerLeft {
@@ -125,6 +136,11 @@
   margin-left: 30px;
 }
 
+.post__footerLeft > .MuiSvgIcon-root:hover {
+  transform: scale(1.1);
+  transition: 200ms ease;
+}
+
 .modal__question {
   display: flex;
   align-items: center;
@@ -132,10 +148,10 @@
   margin-top: 20px;
 }
 
-.modal__question > h1 {
+.modal__question > h2 {
   color: rgb(237, 176, 85);
   font-weight: 600;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .modal__question > p {
